@@ -6,7 +6,7 @@ const config = {
   auth: {
     clientId: "24b24a4a-81e6-49ff-827f-81fa696794cc",
     authority:
-      "https://login.microsoftonline.com/52da6ceb-c432-45d8-9cee-97902996ced9/oauth2/v2.0/authorize"
+      "https://login.microsoftonline.com/52da6ceb-c432-45d8-9cee-97902996ced9"
   }
 };
 
