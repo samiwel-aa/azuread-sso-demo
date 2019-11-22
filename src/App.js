@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { UserAgentApplication } from "msal";
 
-export default App;
+const config = {
+  auth: {
+    clientId: "24b24a4a-81e6-49ff-827f-81fa696794cc",
+    authority:
+      "https://login.microsoftonline.com/52da6ceb-c432-45d8-9cee-97902996ced9/oauth2/v2.0/authorize"
+  }
+};
+
+const msalApp = new UserAgentApplication(config);
+
+msalApp.handleRedirectCallback((error, response) => {
+  console.log({
+    error,
+    response
+  });
+});
+
+const handleClick = () => {
+  const loginRequest = {
+    scopes: ["user.read", "mail.send"] // optional Array<string>
+  };
+
+  msalApp
+    .loginPopup(loginRequest)
+    .then(response => {
+      console.log({ response });
+    })
+    .catch(err => {
+      console.log({ err });
+    });
+};
+
+export default () => (
+  <div>
+    <h1>Azure AD SSO Test</h1>
+    <button type="button" onClick={handleClick}>
+      Sign in
+    </button>
+  </div>
+);
