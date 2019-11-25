@@ -12,4 +12,4 @@ These values can be found on the Application registration page within Azure AD, 
 PORT=3002 yarn start
 ```
 
-**Note: the port can be anything, but care must be taken to ensure that a corresponding redirect URL must be set up for the application within Azure AD**
+**Note: the port can be anything, but care must be taken to ensure that a corresponding redirect URL has been set up for the application within Azure AD**
